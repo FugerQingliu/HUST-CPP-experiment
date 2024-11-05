@@ -55,6 +55,10 @@ namespace adas
                     pose.heading = 'E';
                 }
             }
+            else if (cmd == 'R')
+            {
+                // 留空
+            }
         }
     }
 }
