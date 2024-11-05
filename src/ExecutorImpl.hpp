@@ -2,6 +2,7 @@
 
 #include "Executor.hpp"
 #include <string>
+#include "PoseHandler.hpp"
 
 namespace adas
 {
@@ -20,14 +21,16 @@ namespace adas
         Pose Query(void) const noexcept override;
         void Execute(const std::string &commands) noexcept override;
 
-    public:
-        void Move(void) noexcept;
-        void TurnLeft(void) noexcept;
-        void TurnRight(void) noexcept;
-        void Fast(void) noexcept;
-        bool IsFast(void) const noexcept;
+    private:
+        PoseHandler poseHandler;
+        // public:
+        //     void Move(void) noexcept;
+        //     void TurnLeft(void) noexcept;
+        //     void TurnRight(void) noexcept;
+        //     void Fast(void) noexcept;
+        //     bool IsFast(void) const noexcept;
 
-    // private:
+        // private:
         // class ICommand
         // {
         // public:
@@ -79,8 +82,9 @@ namespace adas
         //     }
         // };
 
-    private:
-        Pose pose;
-        bool fast{false};
+        // private:
+        //     Pose pose;
+        //     bool fast{false};
+        // };
     };
 }
