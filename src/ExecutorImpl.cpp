@@ -1,6 +1,7 @@
 #include "ExecutorImpl.hpp"
 #include <new>
 #include <memory>
+#include "Command.hpp"
 namespace adas
 {
     ExecutorImpl::ExecutorImpl(const Pose &pose) noexcept : pose(pose), fast(false) {}
@@ -80,11 +81,11 @@ namespace adas
                 // }
                 cmder = std::make_unique<TurnRightCommand>();
             }
-            else if(cmd == 'F')
+            else if (cmd == 'F')
             {
                 cmder = std::make_unique<FastCommand>();
             }
-            if(cmder)
+            if (cmder)
             {
                 cmder->DoOperate(*this);
             }
@@ -151,7 +152,7 @@ namespace adas
     }
     void ExecutorImpl::Fast() noexcept
     {
-        fast = !fast;   
+        fast = !fast;
     }
     bool ExecutorImpl::IsFast() const noexcept
     {
