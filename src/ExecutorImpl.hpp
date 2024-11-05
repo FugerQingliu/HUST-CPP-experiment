@@ -26,6 +26,15 @@ namespace adas
         void TurnRight(void) noexcept;
 
     private:
+        class MoveCommand final
+        {
+            public:
+            void DoOperate(ExecutorImpl& executor) const noexcept
+            {
+                executor.Move();
+            } 
+        };
+    private:
         Pose pose;
         bool isFast;
     };

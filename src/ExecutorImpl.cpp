@@ -1,6 +1,6 @@
 #include "ExecutorImpl.hpp"
 #include <new>
-
+#include <memory>
 namespace adas
 {
     ExecutorImpl::ExecutorImpl(const Pose &pose) noexcept : pose(pose), isFast(false) {}
@@ -37,7 +37,8 @@ namespace adas
             //     }
             // }
             {
-                Move();
+                std::unique_ptr<MoveCommand>cmder = std::make_unique<MoveCommand>();
+                cmder -> DoOperate(*this);
             }
             else if (cmd == 'L')
             {
