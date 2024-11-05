@@ -3,7 +3,7 @@
 
 namespace adas
 {
-    ExecutorImpl::ExecutorImpl(const Pose &pose) noexcept {}
+    ExecutorImpl::ExecutorImpl(const Pose &pose) noexcept : pose(pose) {}
     Pose ExecutorImpl::Query(void) const noexcept
     {
         return pose;
