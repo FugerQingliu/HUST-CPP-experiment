@@ -37,8 +37,8 @@ namespace adas
             //     }
             // }
             {
-                std::unique_ptr<MoveCommand>cmder = std::make_unique<MoveCommand>();
-                cmder -> DoOperate(*this);
+                std::unique_ptr<MoveCommand> cmder = std::make_unique<MoveCommand>();
+                cmder->DoOperate(*this);
             }
             else if (cmd == 'L')
             {
@@ -58,7 +58,8 @@ namespace adas
                 // {
                 //     pose.heading = 'E';
                 // }
-                TurnLeft();
+                std::unique_ptr<TurnLeftCommand> cmder = std::make_unique<TurnLeftCommand>();
+                cmder->DoOperate(*this);
             }
             else if (cmd == 'R')
             {
@@ -78,7 +79,8 @@ namespace adas
                 // {
                 //     pose.heading = 'W';
                 // }
-                TurnRight();
+                std::unique_ptr<TurnRightCommand> cmder = std::make_unique<TurnRightCommand>();
+                cmder->DoOperate(*this);
             }
         }
     }
