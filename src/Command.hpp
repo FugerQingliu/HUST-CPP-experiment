@@ -15,9 +15,10 @@ namespace adas
     {
     public:
         // void DoOperate(PoseHandler &poseHandler) const noexcept override
-        const std::function<void(PoseHandler& PoseHandler)> operate = [](PoseHandler& poseHandler) noexcept
+        // const std::function<void(PoseHandler& PoseHandler)> operate = [](PoseHandler& poseHandler) noexcept
+        void operator()(PoseHandler &poseHandler) const noexcept
         {
-            if(poseHandler.IsFast())
+            if (poseHandler.IsFast())
             {
                 poseHandler.Move();
             }
@@ -27,8 +28,9 @@ namespace adas
     class TurnLeftCommand final // : public ICommand
     {
     public:
-        //void DoOperate(PoseHandler &poseHandler) const noexcept override
-        const std::function<void(PoseHandler &PoseHandler)> operate = [](PoseHandler &poseHandler) noexcept
+        // void DoOperate(PoseHandler &poseHandler) const noexcept override
+        // const std::function<void(PoseHandler &PoseHandler)> operate = [](PoseHandler &poseHandler) noexcept
+        void operator()(PoseHandler &poseHandler) const noexcept
         {
             if (poseHandler.IsFast())
             {
@@ -40,8 +42,9 @@ namespace adas
     class TurnRightCommand final //: public ICommand
     {
     public:
-        //void DoOperate(PoseHandler &poseHandler) const noexcept override
-        const std::function<void(PoseHandler &PoseHandler)> operate = [](PoseHandler &poseHandler) noexcept
+        // void DoOperate(PoseHandler &poseHandler) const noexcept override
+        // const std::function<void(PoseHandler &PoseHandler)> operate = [](PoseHandler &poseHandler) noexcept
+        void operator()(PoseHandler &poseHandler) const noexcept
         {
             if (poseHandler.IsFast())
             {
@@ -53,8 +56,9 @@ namespace adas
     class FastCommand final //: public ICommand
     {
     public:
-        //void DoOperate(PoseHandler &poseHandler) const noexcept override
-        const std::function<void(PoseHandler &PoseHandler)> operate = [](PoseHandler &poseHandler) noexcept
+        // void DoOperate(PoseHandler &poseHandler) const noexcept override
+        // const std::function<void(PoseHandler &PoseHandler)> operate = [](PoseHandler &poseHandler) noexcept
+        void operator()(PoseHandler &poseHandler) const noexcept
         {
             poseHandler.Fast();
         };
