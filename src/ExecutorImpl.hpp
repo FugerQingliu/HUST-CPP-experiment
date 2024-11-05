@@ -8,7 +8,7 @@ namespace adas
     /*
         Executor的具体实现
     */
-    class ExecutorImpl : public Executor
+    class ExecutorImpl final : public Executor
     {
     public:
         explicit ExecutorImpl(const Pose &pose) noexcept;
@@ -19,7 +19,14 @@ namespace adas
     public:
         Pose Query(void) const noexcept override;
         void Execute(const std::string &commands) noexcept override;
+
+    private:
+        void Move(void) noexcept;
+        void TurnLeft(void) noexcept;
+        void TurnRight(void) noexcept;
+
     private:
         Pose pose;
+        bool isFast;
     };
 }
