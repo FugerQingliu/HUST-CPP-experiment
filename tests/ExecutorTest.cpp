@@ -133,5 +133,5 @@ namespace adas
         executor->Execute("R");
         const Pose target({0, 0, 'W'});
         ASSERT_EQ(target, executor->Query());
-    }
+    } 
 }
