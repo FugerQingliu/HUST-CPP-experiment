@@ -25,7 +25,7 @@ namespace adas
             {'L', TurnLeftCommand()},
             {'R', TurnRightCommand()},
             {'F', FastCommand()},
-        };
+            {'B', ReverseCommand()}};
         // MoveCommand moveCommand;
         // cmderMap.emplace('M',MoveCommand());
         // TurnLeftCommand turnLeftCommand;

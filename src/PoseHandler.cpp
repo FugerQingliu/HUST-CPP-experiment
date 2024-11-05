@@ -2,29 +2,38 @@
 
 namespace adas
 {
-    PoseHandler::PoseHandler(const Pose &pose) noexcept : point(pose.x,pose.y),facing(&Direction::GetDirection(pose.heading))
-    {}
-    void PoseHandler::Move() noexcept
+    PoseHandler::PoseHandler(const Pose &pose) noexcept : point(pose.x, pose.y), facing(&Direction::GetDirection(pose.heading))
+    {
+    }
+    // void PoseHandler::Move() noexcept
+    // {
+    //     point += facing->Move();
+    // {
+    //     if (pose.heading == 'E')
+    //     {
+    //         ++pose.x;
+    //     }
+    //     else if (pose.heading == 'W')
+    //     {
+    //         --pose.x;
+    //     }
+    //     else if (pose.heading == 'N')
+    //     {
+    //         ++pose.y;
+    //     }
+    //     else if (pose.heading == 'S')
+    //     {
+    //         --pose.y;
+    //     }
+    // }
+    //}
+    void PoseHandler::Forward() noexcept
     {
         point += facing->Move();
-        // {
-        //     if (pose.heading == 'E')
-        //     {
-        //         ++pose.x;
-        //     }
-        //     else if (pose.heading == 'W')
-        //     {
-        //         --pose.x;
-        //     }
-        //     else if (pose.heading == 'N')
-        //     {
-        //         ++pose.y;
-        //     }
-        //     else if (pose.heading == 'S')
-        //     {
-        //         --pose.y;
-        //     }
-        // }
+    }
+    void PoseHandler::Backward() noexcept
+    {
+        point -= facing->Move();
     }
     void PoseHandler::TurnLeft() noexcept
     {
@@ -70,12 +79,20 @@ namespace adas
     {
         fast = !fast;
     }
+    void PoseHandler::Reverse() noexcept
+    {
+        reverse = !reverse;
+    }
     bool PoseHandler::IsFast() const noexcept
     {
         return fast;
     }
+    bool PoseHandler::IsReverse() const noexcept
+    {
+        return reverse;
+    }
     Pose PoseHandler::Query(void) const noexcept
     {
-        return {point.GetX(),point.GetY(),facing->GetHeading()};
+        return {point.GetX(), point.GetY(), facing->GetHeading()};
     }
 }

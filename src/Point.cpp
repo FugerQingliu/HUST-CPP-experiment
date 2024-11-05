@@ -24,6 +24,12 @@ namespace adas
         this->y += rhs.GetY();
         return *this;
     }
+    Point &Point::operator-=(const Point &rhs) noexcept
+    {
+        this->x -= rhs.GetX();
+        this->y -= rhs.GetY();
+        return *this;
+    }
     int Point::GetX(void) const noexcept
     {
         return x;

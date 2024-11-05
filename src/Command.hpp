@@ -20,9 +20,25 @@ namespace adas
         {
             if (poseHandler.IsFast())
             {
-                poseHandler.Move();
+
+                if (poseHandler.IsReverse())
+                {
+                    poseHandler.Backward();
+                }
+                else
+                {
+                    poseHandler.Forward();
+                }
             }
-            poseHandler.Move();
+
+            if (poseHandler.IsReverse())
+            {
+                poseHandler.Backward();
+            }
+            else
+            {
+                poseHandler.Forward();
+            }
         };
     };
     class TurnLeftCommand final // : public ICommand
@@ -34,9 +50,24 @@ namespace adas
         {
             if (poseHandler.IsFast())
             {
-                poseHandler.Move();
+
+                if (poseHandler.IsReverse())
+                {
+                    poseHandler.Backward();
+                }
+                else
+                {
+                    poseHandler.Forward();
+                }
             }
-            poseHandler.TurnLeft();
+            if (poseHandler.IsReverse())
+            {
+                poseHandler.TurnRight();
+            }
+            else
+            {
+                poseHandler.TurnLeft();
+            }
         };
     };
     class TurnRightCommand final //: public ICommand
@@ -48,9 +79,24 @@ namespace adas
         {
             if (poseHandler.IsFast())
             {
-                poseHandler.Move();
+
+                if (poseHandler.IsReverse())
+                {
+                    poseHandler.Backward();
+                }
+                else
+                {
+                    poseHandler.Forward();
+                }
             }
-            poseHandler.TurnRight();
+            if (poseHandler.IsReverse())
+            {
+                poseHandler.TurnLeft();
+            }
+            else
+            {
+                poseHandler.TurnRight();
+            }
         };
     };
     class FastCommand final //: public ICommand
@@ -61,6 +107,17 @@ namespace adas
         void operator()(PoseHandler &poseHandler) const noexcept
         {
             poseHandler.Fast();
+        };
+    };
+
+    class ReverseCommand final //: public ICommand
+    {
+    public:
+        // void DoOperate(PoseHandler &poseHandler) const noexcept override
+        // const std::function<void(PoseHandler &PoseHandler)> operate = [](PoseHandler &poseHandler) noexcept
+        void operator()(PoseHandler &poseHandler) const noexcept
+        {
+            poseHandler.Reverse();
         };
     };
 }
