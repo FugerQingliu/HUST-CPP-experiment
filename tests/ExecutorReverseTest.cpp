@@ -5,41 +5,41 @@
 namespace adas
 {
     // FM
-    TEST(ExecutorFastTest, should_return_x_plus_2_given_status_is_fast_command_is_M_and_facing_is_E)
+    TEST(ExecutorFastTest, should_return_x_minus_1_given_status_is_back_command_is_M_and_facing_is_E)
     {
         std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'E'}));
 
-        executor->Execute("FM");
+        executor->Execute("BM");
 
-        const Pose target{2, 0, 'E'};
+        const Pose target{-1, 0, 'E'};
         ASSERT_EQ(target, executor->Query());
     }
     // FL
-    TEST(ExecutorFastTest, should_return_N_and_x_plus_1_given_status_is_fast_command_is_L_and_facing_is_E)
+    TEST(ExecutorFastTest, should_return_S_given_status_is_back_command_is_L_and_facing_is_E)
     {
         std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'E'}));
 
-        executor->Execute("FL");
+        executor->Execute("BL");
 
-        const Pose target{1, 0, 'N'};
+        const Pose target{0, 0, 'S'};
         ASSERT_EQ(target, executor->Query());
     }
     // FR
-    TEST(ExecutorFastTest, should_return_S_and_x_plus_1_given_status_is_fast_command_is_R_and_facing_is_E)
+    TEST(ExecutorFastTest, should_return_N_given_status_is_back_command_is_R_and_facing_is_E)
     {
         std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'E'}));
 
-        executor->Execute("FR");
+        executor->Execute("BR");
 
-        const Pose target{1, 0, 'S'};
+        const Pose target{0, 0, 'N'};
         ASSERT_EQ(target, executor->Query());
     }
     // FFM
-    TEST(ExecutorFastTest, should_return_y_plus_1_given_command_is_FFM_and_facing_is_N)
+    TEST(ExecutorFastTest, should_return_y_plus_1_given_command_is_BBM_and_facing_is_N)
     {
         std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'N'}));
 
-        executor->Execute("FFM");
+        executor->Execute("BBM");
 
         const Pose target{0, 1, 'N'};
         ASSERT_EQ(target, executor->Query());
