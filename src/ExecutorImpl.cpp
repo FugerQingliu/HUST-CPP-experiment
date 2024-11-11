@@ -43,7 +43,7 @@ namespace adas
         (
             cmders.begin(),
             cmders.end(),
-            [this](const std::function<void(PoseHandler &poseHandler)> &cmder) noexcept
+            [this](const Cmder &cmder) noexcept
             {
                 cmder(poseHandler);
             }
