@@ -94,4 +94,9 @@ namespace adas
             actionVec[static_cast<uint16_t>(actionType)](poseHandler);
         });
     }
+    ActionGroup& ActionGroup::operator+=(const ActionGroup& rhs) noexcept
+    {
+        actions.insert(actions.end(),rhs.actions.begin(),rhs.actions.end());
+        return *this;
+    }
 }

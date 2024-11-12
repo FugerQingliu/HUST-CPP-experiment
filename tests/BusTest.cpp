@@ -70,7 +70,7 @@ namespace adas
     {
         executor->Execute("FBL");
 
-        const Pose target{-1,1,'S'};
+        const Pose target{-2,0,'S'};
         ASSERT_EQ(target,executor->Query());
     }
     TEST_F(BusTest,should_return_x_plus_1_and_facing_S_given_command_is_R_and_facing_is_E)

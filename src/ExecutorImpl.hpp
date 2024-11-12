@@ -1,9 +1,8 @@
 #pragma once
 
-#include "Executor.hpp"
-#include <string>
+#include <memory>
+#include "cmder\CmderOrchestrator.hpp"
 #include ".\core\PoseHandler.hpp"
-#include <unordered_map>
 
 namespace adas
 {
@@ -13,7 +12,7 @@ namespace adas
     class ExecutorImpl final : public Executor
     {
     public:
-        explicit ExecutorImpl(const Pose &pose) noexcept;
+        explicit ExecutorImpl(const Pose &pose,CmderOrchestrator* orchestrator) noexcept;
         ~ExecutorImpl() noexcept = default;
         ExecutorImpl(const ExecutorImpl &) = delete;
         ExecutorImpl &operator=(const ExecutorImpl &) = delete;
@@ -24,5 +23,6 @@ namespace adas
 
     private:
         PoseHandler poseHandler;
+        std::unique_ptr<CmderOrchestrator> orchestrator;
     };
 }

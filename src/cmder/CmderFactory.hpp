@@ -7,7 +7,7 @@
 
 namespace adas
 {
-    using Cmder = std::function<ActionGroup(PoseHandler& poseHandler)>;
+    using Cmder = std::function<ActionGroup(const PoseHandler& poseHandler,const CmderOrchestrator& orchestrator)>;
     using CmderList = std::list<Cmder>;
 
     class CmderFactory final
