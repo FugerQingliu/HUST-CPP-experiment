@@ -9,10 +9,18 @@ namespace adas
         char heading;
     };
 
+    enum class ExecutorType
+    {
+        NORMAL,
+        SPORTS_CAR,
+        BUS,
+    }; 
+
     class Executor
     {
     public:
-        static Executor *NewExecutor(const Pose &pose = {0, 0, 'N'}) noexcept;
+        static Executor *NewExecutor(const Pose &pose = {0, 0, 'N'},
+        const ExecutorType executorType = ExecutorType::NORMAL) noexcept;
 
     public:
         Executor(void) = default;
